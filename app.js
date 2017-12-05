@@ -43,24 +43,10 @@ app.get('/events', function(req, res) {
 app.post('/publish', function(req, res) {
     fs.readFile("./data/" + "events.json", 'utf8', function(err, data) {
         var events = JSON.parse(data);
-        console.log("check events");
-        console.log(events);
-        console.log(events[0]);
-        events.push(req.body[0]);
-        console.log(req.body[0]);
-        console.log(events);
         fs.writeFile("./data/" + "events.json", JSON.stringify(events), function(err, data) {
-            res.send('success updating events');
+            res.send(events);
         });
     });
-    //fs.appendFile("./data/" + "events.json", JSON.stringify(req.body), function(err, data) {
-    //var events = JSON.parse(data);
-    //   console.log("check the REQ");
-    //   console.log(err);
-    //   console.log(data);
-    //  console.log(req.body);
-    // res.send(req.body);
-    //});
 });
 
 
